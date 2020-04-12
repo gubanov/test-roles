@@ -1,5 +1,7 @@
 # Test roles app
-Security framework experiment implemented in kotlin and Spring Boot.
+> Security framework experiment implemented in kotlin and Spring Boot.
+
+[![Build Status](https://travis-ci.com/gubanov/test-roles.svg?branch=master)](https://travis-ci.com/gubanov/test-roles)
 
 ## Structure
 There are 3 modules:
