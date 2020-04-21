@@ -15,6 +15,7 @@ import org.gubanov.security.PersistenceContext
 import org.gubanov.security.RolePermissionsRepository
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.util.TestPropertyValues
@@ -38,6 +39,9 @@ import java.util.concurrent.TimeUnit
 )
 @ContextConfiguration(initializers = [RolesAppMainTest.Initializer::class])
 class RolesAppMainTest {
+    companion object {
+        val LOG = LoggerFactory.getLogger(RolesAppMainTest::class.java)
+    }
 
     @Autowired
     private lateinit var testRestTemplate: TestRestTemplate
@@ -65,13 +69,13 @@ class RolesAppMainTest {
         val errors = ConcurrentLinkedQueue<Throwable>()
         for (i in 1..100) {
             threadPool.submit {
-                println("Executing iteration $i")
+                LOG.info("Executing iteration $i")
                 try {
                     `creates new user, accesses random business endpoint and change password `()
-                    println("Iteration $i SUCCEEDED")
+                    LOG.info("Iteration[$i] SUCCEEDED")
                 } catch (e: Throwable) {
                     errors.add(e)
-                    println("Iteration $i FAILED")
+                    LOG.info("Iteration[$i] FAILED")
                 }
             }
         }
