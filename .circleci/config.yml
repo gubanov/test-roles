@@ -1,23 +1,12 @@
-version: 2.1
-orbs:
-  win: circleci/windows@2.2.0
-
+version: 2
+executorType: machine
 jobs:
   build:
-    executor:
-      name: win/default
-      shell: powershell.exe
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
 
     steps:
       - checkout
 
-      - run: systeminfo
-      - run:
-          name: "Check docker"
-          shell: powershell.exe
-          command: |
-            docker info
-            docker run hello-world:nanoserver-1809
-
-      # run tests!
       - run: ./gradlew --no-daemon build

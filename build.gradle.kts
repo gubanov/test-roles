@@ -25,7 +25,7 @@ subprojects {
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
 
-        implementation(platform("org.testcontainers:testcontainers-bom:1.13.0"))
+        implementation(platform("org.testcontainers:testcontainers-bom:1.14.0"))
         testImplementation("junit:junit:4.12")
         testImplementation("io.mockk:mockk:1.9.3")
         testImplementation("com.willowtreeapps.assertk:assertk:0.21")
