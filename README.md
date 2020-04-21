@@ -2,6 +2,8 @@
 > Security framework experiment implemented in kotlin and Spring Boot.
 
 [![Build Status](https://travis-ci.com/gubanov/test-roles.svg?branch=master)](https://travis-ci.com/gubanov/test-roles)
+[![CircleCI](https://circleci.com/gh/gubanov/test-roles.svg?style=shield)](https://circleci.com/gh/gubanov/test-roles)
+
 
 ## Structure
 There are 3 modules:

@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+
 plugins {
     kotlin("plugin.spring")
     id("io.spring.dependency-management")
@@ -26,5 +28,6 @@ springBoot {
 tasks {
     test {
         testLogging.exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        testLogging.events = setOf(STANDARD_OUT, STANDARD_ERROR, FAILED, PASSED, SKIPPED)
     }
 }
