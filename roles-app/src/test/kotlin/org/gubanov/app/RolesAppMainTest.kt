@@ -35,7 +35,8 @@ import java.util.concurrent.TimeUnit
 @RunWith(SpringRunner::class)
 @SpringBootTest(
     classes = [RolesAppMain::class, PersistenceContext::class, SecurityContext::class, ControllerContext::class],
-    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    properties = ["spring.datasource.hikari.maximumPoolSize = 1"]
 )
 @ContextConfiguration(initializers = [RolesAppMainTest.Initializer::class])
 class RolesAppMainTest {

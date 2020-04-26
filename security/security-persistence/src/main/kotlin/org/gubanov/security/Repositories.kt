@@ -4,6 +4,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.jdbc.core.RowMapper
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
 import java.sql.ResultSet
 
 /**
@@ -33,6 +34,7 @@ class UserDetailsRepository(private val jdbc: NamedParameterJdbcOperations, val 
         )
     }
 
+    @Transactional(readOnly = true)
     fun findByEmail(email: String): DefaultUserDetails? {
         val list = jdbc.query(
             "SELECT * FROM USER_DETAIL ud, USER_ROLE ur, ROLE ro WHERE ud.EMAIL = :email AND ud.EMAIL = ur.USER_EMAIL AND ur.ROLE_NAME = ro.NAME",
